@@ -1,9 +1,9 @@
 # packages_test
 
-
 ## Things that work
 * Deployed multiple release versions of `packages_test` artifact from the `provide_package` directory.
 * Deployed one SNAPSHOT version `packages_test` artifact.
+* Using `packages_test` dependency in other projects **only if** `deploymentManagement` in deploying pom, and `repository` block in consuming pom, both use an `OWNER/REPO` URL. This appears to contradict the [configuration instructions](https://help.github.com/en/articles/configuring-apache-maven-for-use-with-github-package-registry#authenticating-to-github-package-registry)
 
 ## Things that are broken
 * After deploying one SNAPSHOT version, I suspect the maven repo is handling SNAPSHOTs incorrectly and is treating the timestamp-locked SNAPSHOT created by Maven3 as releases. Trying to deploy **any** subsequent SNAPSHOT version of `packages_test` results in:
@@ -13,7 +13,7 @@ Downloading: https://maven.pkg.github.com/hinerm/packages_test/org/hinerm/packag
 [WARNING] Could not transfer metadata org.hinerm:packages_test:4.0.0-SNAPSHOT/maven-metadata.xml from/to github-hinerm (https://maven.pkg.github.com/hinerm/packages_test): Failed to transfer file: https://maven.pkg.github.com/hinerm/packages_test/org/hinerm/packages_test/4.0.0-SNAPSHOT/maven-metadata.xml. Return code is: 400 , ReasonPhrase:Bad Request.
 ```
 
-* I am unable to actually use the `packages_test` dependency in other projects. Doing anything in the `consume_packages` project that would trigger a dependency download, e.g. `mvn dependency:copy-dependencies`, results in failure:
+* When my `repository` block is configured with just a `/OWNER` url and I try to actually use the `packages_test` dependency in other projects, doing anything in the `consume_packages` project that would trigger a dependency download, e.g. `mvn dependency:copy-dependencies -U`, results in failure:
 ```
 Downloading: https://repo1.maven.org/maven2/org/hinerm/packages_test/2/packages_test-2.pom
 Downloading: https://maven.pkg.github.com/hinerm/org/hinerm/packages_test/2/packages_test-2.pom

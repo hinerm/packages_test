@@ -11,13 +11,15 @@
     <profile>
       <id>github</id>
       <repositories>
+	      <!--
         <repository>
           <id>central</id>
           <url>https://repo1.maven.org/maven2</url>
         </repository>
+	      -->
         <repository>
           <id>github-hinerm</id>
-	  <url>https://maven.pkg.github.com/hinerm</url>
+	  <url>https://maven.pkg.github.com/hinerm/packages_test</url>
 	  <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy><checksumPolicy>ignore</checksumPolicy></snapshots>
         </repository>
       </repositories>
@@ -28,7 +30,7 @@
     <server>
       <id>github-hinerm</id>
       <username>hinerm</username>
-      <password>A_VALID_PERSONAL_TOKEN</password>
+      <password>VALID_PACKAGE_ACCESS_TOKEN</password>
     </server>
   </servers>
 </settings>

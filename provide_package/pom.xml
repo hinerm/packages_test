@@ -6,12 +6,12 @@
      
       <groupId>org.hinerm</groupId>
       <artifactId>packages_test</artifactId>
-      <version>4.0.0-SNAPSHOT</version>
-  
+      <version>5</version>
+
     <distributionManagement>
 	   <repository>
 		   <id>github-hinerm</id>
-		   <url>https://maven.pkg.github.com/hinerm/packages_test</url>
+	<url>https://maven.pkg.github.com/hinerm/packages_test</url>
 	   </repository>
     </distributionManagement>
 </project>
